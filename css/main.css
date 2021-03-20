@@ -29,11 +29,11 @@ h1 {
 /* Top */
 #banner {
   background: #0564e9 url("../img/banner2.png") center center;
-  height: 5000px;
+  height: 330px;
   width: 1920px;
   box-sizing: border-box;
-  position: relative;
-  top: -25px;
+  position: absolute;
+  top: 0px;
   text-align: center;
   padding-top: 60px;
   margin-bottom: 30px; }/*

@@ -24,22 +24,65 @@ h1 {
   display: inline-block;
   width: 55%;
   vertical-align: top;
-  height: 600px; }
+  height: 500px; }
 
 /* Top */
 #banner {
-  background: #0564e9 url("../img/banner.png") center center;
+  background: #f2c4ee; /*url("../img/banner.png") center center; */
   height: 200px;
   box-sizing: border-box;
   position: relative;
-  top: -25px;
+  /* top: -25px; */
   text-align: center;
-  padding-top: 60px;
-  margin-bottom: 30px; }
+  padding-top: 20px;
+  margin-bottom: 40px; }
   #banner img {
     max-height: 120px; }
 
+  .topnav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  text-align: left;;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight 700;
+  text-transform: uppercase;}
+
+  .topnav .rightnav {
+    padding-right: 40px;
+    text-align: right;
+    color: #AAA; }
+
+  .topnav .leftnav {
+    padding-left: 40px;
+    text-align: left; }
+
+  .topnav a + a {
+    margin-left: 40px; }
+
+  .topnav a:link {
+    color: #888;
+    background-color: transparent;
+    text-decoration: none; }
+
+  .topnav a:visited {
+    color: #888;
+    background-color: transparent;
+    text-decoration: none; }
+
+  .topnav a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline; }
+
+  .topnav #current {
+    color: black;
+    background-color: transparent;
+    text-decoration: underline; }
+
 #mainWrapper {
+  min-height: 100%;
   padding: 0 40px;
   margin: auto;
   position: relative; }
@@ -50,19 +93,6 @@ img.arrow {
   margin-left: 5px; }
 
 .letter {
-  border-radius: 100%;
-  box-sizing: border-box;
-  width: 28px;
-  height: 28px;
-  padding-top: 4px;
-  position: relative;
-  text-align: center;
-  display: inline-block;
-  margin-left: 5px;
-  font-size: 14px;
-  font-weight: bold; }
-
-.letter2 {
   border-radius: 100%;
   box-sizing: border-box;
   width: 28px;
@@ -116,7 +146,7 @@ path.ranking {
 
 /* Info */
 #profile {
-  margin-top: -20px;
+  margin-top: 100px;
   margin-left: 40px;
   height: 160px; }
   #profile #picWrapper {
@@ -132,9 +162,11 @@ path.ranking {
     #profile #textWrapper #infoName {
       font-size: 20px;
       font-weight: 700; }
-    #profile #textWrapper #infoLetter #infoLetter2 {
+    #profile #textWrapper #infoLetter {
       top: -3px; }
     #profile #textWrapper #infoCompany {
+      margin: 5px 0 8px; }
+    #profile #textWrapper #infoRank {
       margin: 5px 0 8px; }
 
 .pie .arc text {
@@ -148,7 +180,7 @@ path.ranking {
 #chart {
   position: absolute;
   top: 0;
-  right: 50px;
+  right: 40px;
   width: 500px; }
   #chart tbody {
     display: block;
@@ -162,22 +194,14 @@ path.ranking {
   table-layout: fixed;
   width: 100%;
   font-size: 13px; }
-   #top .selectedSort {
+  #top .selectedSort {
     color: #000; }
-  /*#top #japanBody .selectedSort {
-    color: #dbcece; }
-#top #koreaBody .selectedSort {
-    color: #ccd9e0; }*/
   #top #topBody tr {
     cursor: pointer; }
     #top #topBody tr:hover {
       background: #e6e6e6 !important; }
-   #top #topBody tr.wanna-members {
+    #top #topBody tr.wanna-members {
       background: #eee; }
-/*#top #topBody #japanBody tr.wanna-members {
-      background: #dbb3cd; }
-#top #topBody #koreaBody tr.wanna-members {
-      background: #a6c1cf; }*/
   #top td {
     padding: 5px 15px;
     border-bottom: 1px solid #ccc; }
@@ -189,19 +213,22 @@ path.ranking {
     #top th:hover {
       color: black; }
   #top #latestRank, #top #letter, #top #rankChange, #top .smWidth {
-    width: 17px; }
+    width: 20px; }
   #top #rankChange, #top .rankWidth {
-    width: 50px; }
+    width: 40px; }
   #top #name, #top .nameWidth {
-    width: 115px; }
+    width: 100px; }
   #top #company, #top .companyWidth {
-    width: 95px; }
+    width: 150px; }
 
-#footer {
-  padding: 20px 50px;
-  margin-top: 60px;
+footer {
+/* #footer { */
+  /* padding: 20px 50px; */
+  margin-top: -60px;
   font-size: 10px;
   background: #eee;
   color: #888; }
   #footer a {
     color: #888; }
+
+/*# sourceMappingURL=main.css.map */

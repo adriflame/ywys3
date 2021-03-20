@@ -1,37 +1,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:fb="http://ogp.me/ns/fb#">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165983178-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-165983178-1');
-    </script>
-
     <script src="js/d3.v4.min.js" charset="utf-8"></script>
-    <script src="js/jquery-3.2.1.min.js"></script> 
+    <script src="js/jquery-3.2.1.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="icon" type="image/jpg" sizes="32x32" href="img/youthwithyous2_logo.jpg">
-
-    <link rel="shortcut icon" href="img/youthwithyous2_logo.jpg" />
-    <title>Youth with You Season 3 Rankings</title>
+    <meta property="og:image" content="https://p101s2.github.io/pics/KimJongHyun.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Produce 101 Season 2 Rankings</title>
 </head>
 <body>
 
-    <div id="banner">
-      <img src="img/youthwithyous2_logo.jpg">
-      <div class="topnav">
-        <div class="leftnav">
-          <a id="current" href="https://johnnyma314.github.io/ywys3">Youth with You Season 3</a>
-        </div>
-        <div class="rightnav">
-        </div>
-      </div>
-    </div>
+    <div id="banner"><img src="img/logo.png"></div>
 
     <div id="mainWrapper">
 
@@ -44,6 +26,8 @@
                 <div class="note" id="note3"></div>
                 <div class="note" id="note4"></div>
                 <div class="note" id="note5"></div>
+                <div class="note" id="note6"></div>
+                <div class="note" id="note7"></div>
             </div>
 
             <!-- Profile -->
@@ -54,9 +38,8 @@
                 <div id="textWrapper">
                     <span id="infoName"></span>
                     <span id="infoLetter" class="letter"></span>
-                    <div id="infoFullName" class="smallCaps"></div>
                     <div id="infoCompany" class="smallCaps"></div>
-                    <div id="infoRank" class="smallCaps"></div>
+                    <div id="infoRank"></div>
                 </div>
             </div>
         </div>
@@ -70,7 +53,7 @@
                         <th onclick="toggleSort('latestRank')" id="latestRank" class="selectedSort" data-asc="true">Rank</th>
                         <th onclick="toggleSort('name')" id="name" data-asc="false">Name</th>
                         <th onclick="toggleSort('company')" id="company" data-asc="false">Company</th>
-                        <th onclick="toggleSort('letter')" id="letter" data-asc="false">Letter</th>
+                        <th onclick="toggleSort('letter')" id="letter" data-asc="false">Class</th>
                         <th onclick="toggleSort('rankChange')" id="rankChange" data-asc="false">Change</th>
                     </tr>
                 </thead>
@@ -78,10 +61,10 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 
-
-    <footer>
+    <div id="footer">
         <p>Images and Rankings: <a href="https://kprofiles.com/youth-with-you-3-trainees-profile/">https://kprofiles.com/youth-with-you-3-trainees-profile//</a></p>
     </footer>
 

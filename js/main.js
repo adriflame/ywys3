@@ -13,7 +13,7 @@ var padding = 40;
 var middlePadding = (padding * 2) + 100;
 var width = $(window).width() - middlePadding - CHART_WIDTH - 30;
 
-var episodes = [1, 2, 3, 5, 6, 8, 10, 11];
+var episodes = [2,4,6];
 var totalData;
 var dFirst;
 
@@ -38,7 +38,7 @@ var plot = svg.append("g").attr("transform", "translate(" + padding + "," + padd
 setXAxis();
 
 // Get data
-d3.csv("ywys3.csv", parseLine, function (err, data) {
+d3.csv("produce101.csv", parseLine, function (err, data) {
     totalData = processData(data);
     plotData(data);
     selectLine(dFirst, "#line1");
@@ -359,8 +359,8 @@ function parseLine(row) {
     var r = {};
     r.name = row.Name;
     r.company = row.Company;
-    r.letter = row["Re-Evaluation"];
-    r.specialNote = row.note;
+    r.letter = row["Level Audition"];
+    // r.specialNote = row.note;
     r.ranking = [];
     episodes.forEach(function(episode, i) {
         var rank = getRank(row["ep" + episode]);

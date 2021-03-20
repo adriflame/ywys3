@@ -13,7 +13,7 @@ var padding = 40;
 var middlePadding = (padding * 2) + 100;
 var width = $(window).width() - middlePadding - CHART_WIDTH - 30;
 
-var episodes = [2, 4,6];
+var episodes = [2,4,6];
 var totalData;
 var dFirst;
 
@@ -378,7 +378,7 @@ function parseLine(row) {
     r.name = row.Name;
     r.company = row.Company;
     r.letter = row["Level Audition"];
-     r.letter2 = row["Re-Evaluation"];
+    r.letter2 = row["Re-Evaluation"];
     r.specialNote = row.note;
     r.ranking = [];
     episodes.forEach(function(episode, i) {

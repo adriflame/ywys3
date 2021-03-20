@@ -21,8 +21,8 @@ var colors = {
     "A": "#fb9fcb",
     "B": "#ff951c",
     "C": "#fff200",
-    "D": "#00a500",
-    "F": "gray"
+    "N": "#00a500"
+    // "N": "gray"
 };
 
 // Set up plot
@@ -359,7 +359,7 @@ function parseLine(row) {
     var r = {};
     r.name = row.Name;
     r.company = row.Company;
-    r.letter = row.InitialRanking;
+    r.letter = row['InitialRanking'];
     // r.specialNote = row.note;
     r.ranking = [];
     episodes.forEach(function(episode, i) {

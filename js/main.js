@@ -1,5 +1,3 @@
-"use strict";
-
 var OFFSET = 23;
 var NORMAL_WIDTH = 6;
 var SELECT_WIDTH = 8;
@@ -21,8 +19,8 @@ var colors = {
     "A": "#fb9fcb",
     "B": "#ff951c",
     "C": "#fff200",
-    "N": "#00a500"
-    // "N": "gray"
+    "D": "#00a500",
+    "F": "gray"
 };
 
 // Set up plot
@@ -38,7 +36,7 @@ var plot = svg.append("g").attr("transform", "translate(" + padding + "," + padd
 setXAxis();
 
 // Get data
-d3.csv("ywys3.csv", parseLine, function (err, data) {
+d3.csv("produce101.csv", parseLine, function (err, data) {
     totalData = processData(data);
     plotData(data);
     selectLine(dFirst, "#line1");
@@ -156,6 +154,7 @@ function showChart(key, asc) {
  function td(str, cl) {
      return "<td class='" + cl + "'>" + str + "</td>";
  }
+
 
 
 // Displays profile
@@ -317,7 +316,7 @@ function getRankInfo(d) {
     if (d.isEliminated) {
         return "Eliminated in Episode " + episodes[d.ranking.length - 1];
     }
-    return "The Nine Member, Rank " + d.currentRank + " " + displayRankChange(d);
+    return "Wanna One Member, Rank " + d.currentRank + " " + displayRankChange(d);
 }
 
 function updateNotes(d) {
@@ -358,7 +357,7 @@ function parseLine(row) {
     var r = {};
     r.name = row.Name;
     r.company = row.Company;
-    r.letter = row['Level Audition'];
+    r.letter = row["Re-Evaluation"];
     r.specialNote = row.note;
     r.ranking = [];
     episodes.forEach(function(episode, i) {

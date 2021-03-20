@@ -1,14 +1,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:fb="http://ogp.me/ns/fb#">
 <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-166051682-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-166051682-2');
+</script>
+
     <script src="js/d3.v4.min.js" charset="utf-8"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <meta property="og:image" content="https://p101s2.github.io/pics/KimJongHyun.jpg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Youth With You Season 3</title>
 </head>
 <body>
@@ -28,6 +35,10 @@
                 <div class="note" id="note5"></div>
                 <div class="note" id="note6"></div>
                 <div class="note" id="note7"></div>
+                <div class="note" id="note8"></div>
+                <div class="note" id="note9"></div>
+                <div class="note" id="note10"></div>
+                <div class="note" id="note11"></div>
             </div>
 
             <!-- Profile -->
@@ -38,8 +49,9 @@
                 <div id="textWrapper">
                     <span id="infoName"></span>
                     <span id="infoLetter" class="letter"></span>
+                    <span id="infoLetter2" class="letter2"></span>
                     <div id="infoCompany" class="smallCaps"></div>
-                    <div id="infoRank"></div>
+                    <!--<div id="infoRank"></div>-->
                 </div>
             </div>
         </div>
@@ -53,7 +65,8 @@
                         <th onclick="toggleSort('latestRank')" id="latestRank" class="selectedSort" data-asc="true">Rank</th>
                         <th onclick="toggleSort('name')" id="name" data-asc="false">Name</th>
                         <th onclick="toggleSort('company')" id="company" data-asc="false">Company</th>
-                        <th onclick="toggleSort('letter')" id="letter" data-asc="false">Class</th>
+                        <th onclick="toggleSort('letter')" id="letter" data-asc="false">1st Grade</th>
+                          <th onclick="toggleSort('letter2')" id="letter2" data-asc="false">2nd Grade</th>
                         <th onclick="toggleSort('rankChange')" id="rankChange" data-asc="false">Change</th>
                     </tr>
                 </thead>
@@ -65,8 +78,8 @@
     </div>
 
     <div id="footer">
-        <p>Images and Rankings: <a href="https://kprofiles.com/youth-with-you-3-trainees-profile/">https://kprofiles.com/youth-with-you-3-trainees-profile//</a></p>
-    </footer>
+          <p>Forked from: <a href="https://github.com/p101s2/p101s2.github.io">https://github.com/p101s2/p101s2.github.io</a></p>
+    </div>
 
     <script src="js/main.js"></script>
 

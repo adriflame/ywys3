@@ -1,26 +1,29 @@
+"use strict";
+
 var OFFSET = 23;
 var NORMAL_WIDTH = 6;
 var SELECT_WIDTH = 8;
 var NORMAL_OPACITY = 0.1;
 var SELECT_OPACITY = 1;
 var CHART_WIDTH = 500;
-var CUTOFF = 11; // Update cutoff
+var CUTOFF = 7; // Update cutoff
 
 var height = 390;
 var padding = 40;
 var middlePadding = (padding * 2) + 100;
 var width = $(window).width() - middlePadding - CHART_WIDTH - 30;
 
-var episodes = [2,4,6];
+var episodes = [2, 3, 4, 5, 6, 7, 8, 9, -5, -4, -3, 10];
 var totalData;
 var dFirst;
 
 var colors = {
-    "A": "#fb9fcb",
-    "B": "#ff951c",
-    "C": "#fff200",
-    "D": "#00a500",
-    "F": "gray"
+    "A": "#ff86b9",
+    "B": "#ffd638",
+    "C": "#1cc3ca",
+    "F": "#a6a6a4",
+    "?": "#000000",
+    "-": "#000000"
 };
 
 // Set up plot
@@ -36,7 +39,7 @@ var plot = svg.append("g").attr("transform", "translate(" + padding + "," + padd
 setXAxis();
 
 // Get data
-d3.csv("produce101.csv", parseLine, function (err, data) {
+d3.csv("produce48.csv", parseLine, function (err, data) {
     totalData = processData(data);
     plotData(data);
     selectLine(dFirst, "#line1");
@@ -140,11 +143,12 @@ function showChart(key, asc) {
         })
         .html(function(d) {
             var letter = '<div class="letter" style="background: ' + getBackground(d) + '; color: ' + getTextColor(d) + '">' + d.letter + '</div>';
+            var letter2 = '<div class="letter2" style="background: ' + getBackground2(d) + '; color: ' + getTextColor2(d) + '">' + d.letter2 + '</div>';
             var rank = d.latestRank;
             if (rank == 1000) {
                 rank = "-";
             }
-            return td(rank, "smWidth") + td(d.name, "nameWidth") + td(d.company, "companyWidth") + td(letter, "smWidth") + td(displayRankChange(d), "rankWidth");
+            return td(rank, "smWidth") + td(d.name, "nameWidth") + td(d.company, "companyWidth") + td(letter, "smWidth") + td(letter2, "smWidth") + td(displayRankChange(d), "rankWidth");
         })
         .on("mouseover", function(d) {
             selectLine(d, "#line" + d.latestRank);
@@ -165,16 +169,24 @@ function displayProfile(d) {
         .text(d.letter)
         .css("background", getBackground(d))
         .css("color", getTextColor(d));
+    $("#infoLetter2")
+        .text(d.letter2)
+        .css("background", getBackground2(d))
+        .css("color", getTextColor2(d));
     $("#infoCompany").text(d.company);
     $("#infoRank").html(getRankInfo(d));
 }
 
 function getImageSource(d) {
-    return "pics/" + d.name.replace(/ /g, "") + ".jpg";
+    return "pics/" + d.name.replace(/ /g, "") + ".png";
 }
 
 function getBackground(d) {
     return colors[d.letter];
+}
+
+function getBackground2(d) {
+    return colors[d.letter2];
 }
 
 function resetLines() {
@@ -249,7 +261,7 @@ function plotData(data) {
             return pathGenerator(d.ranking);
         })
         .style("stroke", function(d, i) {
-            return getBackground(d);
+            return getBackground2(d);
         })
         .style("stroke-width", NORMAL_WIDTH)
         .on("mouseover", function (d) {
@@ -285,9 +297,11 @@ function getCurrentRank(d) {
 
 // Returns the change in rank, or "-" for eliminated contestants
 function getRankChange(d) {
+    
     if (d.ranking.length < episodes.length) {
         return "-";
     }
+    
     var prevRank = d.ranking[d.ranking.length - 2].rank;
     return prevRank - getCurrentRank(d);
 }
@@ -308,15 +322,14 @@ function displayRankChange(d) {
 // Returns the change for current contestants, or shows elimination
 function getRankInfo(d) {
     if (d.specialNote != "") {
-        return d.specialNote;
-    }
-    if (d.ranking.length == 0) {
-        return "Withdrew from show";
+        return "Withdrew";
     }
     if (d.isEliminated) {
-        return "Eliminated in Episode " + episodes[d.ranking.length - 1];
+        //return "Eliminated in Episode " + episodes[d.ranking.length - 1];
+        return;
     }
-    return "Wanna One Member, Rank " + d.currentRank + " " + displayRankChange(d);
+    return d.currentRank + " " + displayRankChange(d);
+    //return "Wanna One Member, Rank " + d.currentRank + " " + displayRankChange(d);
 }
 
 function updateNotes(d) {
@@ -330,15 +343,22 @@ function updateNotes(d) {
             $("#note" + i)
                 .text(rank)
                 .css("top", scaleY(rank) + OFFSET)
-                .css("background", getBackground(d))
-                .css("color", getTextColor(d));
+                .css("background", getBackground2(d))
+                .css("color", getTextColor2(d));
         }
     }
 }
 
-// Get color of note text (all white except for yellow rank C)
+// Get color of note text (all white except for yellow rank B)
 function getTextColor(d) {
-    if (d.letter == "C") {
+    if (d.letter == "B") {
+        return "black";
+    }
+    return "white";
+}
+
+function getTextColor2(d) {
+    if (d.letter2 == "B") {
         return "black";
     }
     return "white";
@@ -357,7 +377,8 @@ function parseLine(row) {
     var r = {};
     r.name = row.Name;
     r.company = row.Company;
-    r.letter = row["Re-Evaluation"];
+    r.letter = row["Level Audition"];
+    r.letter2 = row["Re-Evaluation"];
     r.specialNote = row.note;
     r.ranking = [];
     episodes.forEach(function(episode, i) {

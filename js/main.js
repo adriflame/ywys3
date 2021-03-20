@@ -158,7 +158,6 @@ function showChart(key, asc) {
  }
 
 
-
 // Displays profile
 function displayProfile(d) {
     $("#pic").attr("src", getImageSource(d));

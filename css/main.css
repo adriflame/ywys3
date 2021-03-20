@@ -62,6 +62,19 @@ img.arrow {
   font-size: 14px;
   font-weight: bold; }
 
+.letter2 {
+  border-radius: 100%;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  padding-top: 4px;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: bold; }
+
 .change {
   padding-left: 3px;
   font-weight: bold; }
@@ -119,7 +132,7 @@ path.ranking {
     #profile #textWrapper #infoName {
       font-size: 20px;
       font-weight: 700; }
-    #profile #textWrapper #infoLetter {
+    #profile #textWrapper #infoLetter #infoLetter2 {
       top: -3px; }
     #profile #textWrapper #infoCompany {
       margin: 5px 0 8px; }
@@ -149,14 +162,22 @@ path.ranking {
   table-layout: fixed;
   width: 100%;
   font-size: 13px; }
-  #top .selectedSort {
+   #top .selectedSort {
     color: #000; }
+  /*#top #japanBody .selectedSort {
+    color: #dbcece; }
+#top #koreaBody .selectedSort {
+    color: #ccd9e0; }*/
   #top #topBody tr {
     cursor: pointer; }
     #top #topBody tr:hover {
       background: #e6e6e6 !important; }
-    #top #topBody tr.wanna-members {
+   #top #topBody tr.wanna-members {
       background: #eee; }
+/*#top #topBody #japanBody tr.wanna-members {
+      background: #dbb3cd; }
+#top #topBody #koreaBody tr.wanna-members {
+      background: #a6c1cf; }*/
   #top td {
     padding: 5px 15px;
     border-bottom: 1px solid #ccc; }
@@ -168,13 +189,13 @@ path.ranking {
     #top th:hover {
       color: black; }
   #top #latestRank, #top #letter, #top #rankChange, #top .smWidth {
-    width: 20px; }
+    width: 17px; }
   #top #rankChange, #top .rankWidth {
-    width: 40px; }
+    width: 50px; }
   #top #name, #top .nameWidth {
-    width: 120px; }
+    width: 115px; }
   #top #company, #top .companyWidth {
-    width: 150px; }
+    width: 95px; }
 
 #footer {
   padding: 20px 50px;
@@ -184,5 +205,3 @@ path.ranking {
   color: #888; }
   #footer a {
     color: #888; }
-
-/*# sourceMappingURL=main.css.map */

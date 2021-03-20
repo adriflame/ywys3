@@ -6,44 +6,43 @@ var SELECT_WIDTH = 8;
 var NORMAL_OPACITY = 0.1;
 var SELECT_OPACITY = 1;
 var CHART_WIDTH = 500;
-var CUTOFF = 9; // Update cutoff
+var CUTOFF = 7; // Update cutoff
 
 var height = 390;
 var padding = 40;
 var middlePadding = (padding * 2) + 100;
-var width = $(window).width() - middlePadding - CHART_WIDTH - 100;
+var width = $(window).width() - middlePadding - CHART_WIDTH - 30;
 
-var episodes = [2,4,6];
+var episodes = [2, 4,6];
 var totalData;
 var dFirst;
 
 var colors = {
-    "A": "#fb9fcb",
-    "B": "#B6D2EB",
-    "C": "#ffe769",
-    "D": "#9dedc2",
+    "A": "#ff86b9",
+    "B": "#ffd638",
+    "C": "#1cc3ca",
+    "N": "#a6a6a4",
     "?": "#000000",
-    "-": "#000000",
-    "N": "#696969"
+    "-": "#000000"
 };
 
 // Set up plot
 var svg = d3.select("#plot").append("svg")
     .attr("class", "axis")
-    .attr("height", 520)
+    .attr("height", height + padding * 2)
     .attr("width", width + padding * 2);
 
 var scaleX = d3.scaleLinear().domain([0, episodes.length - 1]).range([0, width]);
-var scaleY = d3.scaleLinear().domain([0, 80]).range([0, height]);
+var scaleY = d3.scaleLinear().domain([0, 99]).range([0, height]);
 var plot = svg.append("g").attr("transform", "translate(" + padding + "," + padding + ")");
 
 setXAxis();
 
 // Get data
-d3.csv("main.csv", parseLine, function (err, data) {
+d3.csv("produce48.csv", parseLine, function (err, data) {
     totalData = processData(data);
     plotData(data);
-    selectLine(dFirst, "#lineYuJingtianTony");
+    selectLine(dFirst, "#line1");
     showChart("latestRank", true);
 });
 
@@ -128,6 +127,7 @@ function toggleSort(key) {
 // Update chart
 function showChart(key, asc) {
     var sortedData = sortByKey(totalData, key, asc);
+    console.log(sortedData);
     var top = d3.select("#topBody");
 
     top.selectAll("tr.top").remove();
@@ -145,13 +145,13 @@ function showChart(key, asc) {
             var letter = '<div class="letter" style="background: ' + getBackground(d) + '; color: ' + getTextColor(d) + '">' + d.letter + '</div>';
             var letter2 = '<div class="letter2" style="background: ' + getBackground2(d) + '; color: ' + getTextColor2(d) + '">' + d.letter2 + '</div>';
             var rank = d.latestRank;
-            if (rank == "-") {
+            if (rank == 1000) {
                 rank = "-";
             }
-            return td(rank, "smWidth") + td(d.name, "nameWidth") + td(d.company, "companyWidth") + td(letter, "smWidth") + td(displayRankChange(d), "rankWidth");
+            return td(rank, "smWidth") + td(d.name, "nameWidth") + td(d.company, "companyWidth") + td(letter, "smWidth") + td(letter2, "smWidth") + td(displayRankChange(d), "rankWidth");
         })
         .on("mouseover", function(d) {
-            selectLine(d, "#line" + d.name.replace(/\s/g, '').replace("/", '').replace(".", ""));
+            selectLine(d, "#line" + d.latestRank);
         });
  }
 
@@ -169,33 +169,25 @@ function displayProfile(d) {
         .text(d.letter)
         .css("background", getBackground(d))
         .css("color", getTextColor(d));
-    // $("#infoLetter2")
-    //     .text(d.letter2)
-    //     .css("background", getBackground2(d))
-    //     .css("color", getTextColor2(d));
-    // $("#infoLetter3")
-    //     .text(d.letter3)
-    //     .css("background", getBackground3(d))
-    //     .css("color", getTextColor3(d));
+    $("#infoLetter2")
+        .text(d.letter2)
+        .css("background", getBackground2(d))
+        .css("color", getTextColor2(d));
     $("#infoCompany").text(d.company);
     $("#infoRank").html(getRankInfo(d));
 }
 
 function getImageSource(d) {
-    return "pics/" + d.name.replace(/\s/g, '').replace("/", "") + ".jpg";
+    return "pics/" + d.name.replace(/ /g, "") + ".png";
 }
 
 function getBackground(d) {
     return colors[d.letter];
 }
 
-// function getBackground2(d) {
-//     return colors[d.letter2];
-// }
-
-// function getBackground3(d) {
-//     return colors[d.letter3];
-// }
+function getBackground2(d) {
+    return colors[d.letter2];
+}
 
 function resetLines() {
     plot.selectAll("path.ranking")
@@ -253,26 +245,23 @@ function plotData(data) {
     var pathGenerator = d3.line()
     .x(function (d) { return scaleX(d.x); })
     .y(function (d) { return scaleY(d.rank); });
-    
+
     paths.enter().append("path")
         .attr("class", "ranking")
         .attr("id", function(d) {
             if (d.latestRank == 1) {
                 dFirst = d;
             }
-            return "line" + d.name.replace(/\s/g, '').replace("/", "").replace(".", "");
+            if (d.specialNote != "") { // Special Line
+                return "sline" + d.latestRank;
+            }
+            return "line" + d.latestRank;
         })
         .attr("d", function(d, i) {
             return pathGenerator(d.ranking);
         })
         .style("stroke", function(d, i) {
-            let color = getBackground(d)
-            // let color = getBackground3(d)
-            // if (!color) {
-            //     color = getBackground2(d)
-            //     return color;
-            // }
-            return color;
+            return getBackground2(d);
         })
         .style("stroke-width", NORMAL_WIDTH)
         .on("mouseover", function (d) {
@@ -291,13 +280,9 @@ function plotData(data) {
 
 // Returns the latest rank for every contestant, 1000 for those never ranked
 function getLatestRank(d) {
-    var ranking = d.ranking[d.ranking.length - 1]
+    var ranking = d.ranking[d.ranking.length - 1];
     if (ranking == undefined) {
         return 1000;
-    }
-    if (d.ranking.length < episodes.length) {
-        console.log(d)
-        return "-"
     }
     return ranking.rank;
 }
@@ -312,9 +297,11 @@ function getCurrentRank(d) {
 
 // Returns the change in rank, or "-" for eliminated contestants
 function getRankChange(d) {
+    
     if (d.ranking.length < episodes.length) {
         return "-";
     }
+    
     var prevRank = d.ranking[d.ranking.length - 2].rank;
     return prevRank - getCurrentRank(d);
 }
@@ -353,39 +340,27 @@ function updateNotes(d) {
             $("#note" + i).hide();
         } else { // Show rank
             var rank = d.ranking[i].rank;
-            let color = getBackground(d)
-            // let color = getBackground3(d)
-            // if (!color) {
-            //     color = getBackground2(d)
-            // }
             $("#note" + i)
                 .text(rank)
                 .css("top", scaleY(rank) + OFFSET)
-                .css("background", color)
-                .css("color", getTextColor(d));
+                .css("background", getBackground2(d))
+                .css("color", getTextColor2(d));
         }
     }
 }
 
-// Get color of note text (all white except for yellow rank C)
+// Get color of note text (all white except for yellow rank B)
 function getTextColor(d) {
-    // if (d.letter2 == "C") {
-    //     return "black";
-    // }
+    if (d.letter == "B") {
+        return "black";
+    }
     return "white";
 }
 
 function getTextColor2(d) {
-    // if (d.letter2 == "C") {
-    //     return "black";
-    // }
-    return "white";
-}
-
-function getTextColor3(d) {
-    // if (d.letter2 == "C") {
-    //     return "black";
-    // }
+    if (d.letter2 == "B") {
+        return "black";
+    }
     return "white";
 }
 
@@ -403,7 +378,7 @@ function parseLine(row) {
     r.name = row.Name;
     r.company = row.Company;
     r.letter = row["Level Audition"];
-    r.letter2 = row["Re-Evaluation"];
+     r.letter2 = row["Re-Evaluation"];
     r.specialNote = row.note;
     r.ranking = [];
     episodes.forEach(function(episode, i) {

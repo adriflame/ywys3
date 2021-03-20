@@ -1,7 +1,6 @@
-[Produce 101 Season 2 Rankings](https://p101s2.github.io/)
+[Youth With You Season 3 Rankings](https://johnnyma314.github.io/ywys3/)
 
-An interactive ranking chart for MNet's Produce 101 Season 2 made with d3.js.
+An interactive ranking chart for iQiyi's Youth With You Season 3 made with d3.js.
 
-Feel free to fork this project. If any derivative works are published to a website, I would greatly appreciate a link back to this repo. Thanks!
+Forked from [this github](https://github.com/p101s2/p101s2.github.io)
 
-![alt text](screenshot.png "Screenshot")

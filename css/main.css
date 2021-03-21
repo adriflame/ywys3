@@ -199,8 +199,7 @@ path.ranking {
     width: 95px; }
 
 #footer {
-  /*padding: 20px 50px;*/
-  padding: 0px 0px;
+  padding: 20px 50px;
   margin-top: 60px;
   font-size: 10px;
   background: #eee;

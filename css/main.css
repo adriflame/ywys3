@@ -87,17 +87,17 @@ img.arrow {
 /* Graph */
 .axis path {
   fill: none;
-  stroke: white; }
+  stroke: black; }
 
 .axis line {
-  stroke: black; }
+  stroke: white; }
 
 path.ranking {
   fill: none;
   cursor: pointer; }
 
 .note {
-  background: black;
+  background: white;
   color: white;
   display: inline-block;
   position: absolute;

@@ -181,7 +181,9 @@ function getImageSource(d) {
     if d.name.includes('/') {
         return "ywys3pics/" + d.name.substr(d.name.indexOf("/") + 1) + ".png";
     }
+    else {
     return "ywys3pics/" + d.name + ".png";
+    }
 }
 
 function getBackground(d) {

@@ -35,7 +35,7 @@ h1 {
   position: relative;
   top: 0px;
   text-align: center;
-  padding-top: 60px;
+  padding-top: 30px;
   margin-bottom: 30px; }
   #banner img {
     max-height: 120px; }
@@ -180,7 +180,7 @@ path.ranking {
 #top #topBody #koreaBody tr.wanna-members {
       background: #a6c1cf; }*/
   #top td {
-    padding: 5px 15px;
+    padding: 10px 15px;
     border-bottom: 1px solid #ccc; }
   #top th {
     cursor: pointer;

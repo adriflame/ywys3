@@ -24,7 +24,7 @@ h1 {
   display: inline-block;
   width: 55%;
   vertical-align: top;
-  height: 600px; }
+  height: 500px; }
 
 /* Top */
 
@@ -33,7 +33,7 @@ h1 {
   height: 200px;
   box-sizing: border-box;
   position: relative;
-  top: -25px;
+  top: 0px;
   text-align: center;
   padding-top: 60px;
   margin-bottom: 30px; }
@@ -186,7 +186,7 @@ path.ranking {
     cursor: pointer;
     text-align: left;
     border-bottom: 2px solid #ccc;
-    padding: 5px 15px !important; }
+    padding: 10px 15px !important; }
     #top th:hover {
       color: black; }
   #top #latestRank, #top #letter, #top #rankChange, #top .smWidth {
@@ -200,7 +200,7 @@ path.ranking {
 
 #footer {
   padding: 20px 50px;
-  margin-top: 60px;
+  margin-top: 40px;
   font-size: 10px;
   background: #eee;
   color: #888; }

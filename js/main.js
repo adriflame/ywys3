@@ -178,7 +178,10 @@ function displayProfile(d) {
 }
 
 function getImageSource(d) {
-    return "pics/" + d.name.replace(/ /g, "") + ".png";
+    if d.name.includes('/') {
+        return "ywys3pics/" + d.name.substr(d.name.indexOf("/") + 1) + ".png";
+    }
+    return "ywys3pics/" + d.name + ".png";
 }
 
 function getBackground(d) {

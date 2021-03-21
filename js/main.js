@@ -178,12 +178,7 @@ function displayProfile(d) {
 }
 
 function getImageSource(d) {
-    if d.name.includes("/") {
-        return "ywys3pics/" + d.name.substr(d.name.indexOf("/") + 1).replace(/ /g, "") + ".png";
-    }
-    else {
     return "ywys3pics/" + d.name.replace(/ /g, "") + ".png";
-    }
 }
 
 function getBackground(d) {

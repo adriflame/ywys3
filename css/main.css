@@ -87,7 +87,7 @@ img.arrow {
 /* Graph */
 .axis path {
   fill: none;
-  stroke: black; }
+  stroke: white; }
 
 .axis line {
   stroke: black; }
@@ -164,7 +164,7 @@ path.ranking {
   width: 100%;
   font-size: 13px; }
    #top .selectedSort {
-    color: #FB9FCB; }
+    color: #000; }
   /*#top #japanBody .selectedSort {
     color: #dbcece; }
 #top #koreaBody .selectedSort {

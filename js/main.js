@@ -70,7 +70,7 @@ function setXAxis() {
 
         // Add gridline
         plot.append("path")
-            .attr("d", "M" + scaleX(i) + "," + scaleY(0) + "L" + scaleX(i) + "," + scaleY(118))
+            .attr("d", "M" + scaleX(i) + "," + scaleY(0) + "L" + scaleX(i) + "," + scaleY(140))
             .style("opacity", "0.1")
             .style("stroke-width", 3);
     });

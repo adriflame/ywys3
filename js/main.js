@@ -8,7 +8,7 @@ var SELECT_OPACITY = 1;
 var CHART_WIDTH = 500;
 var CUTOFF = 9; // The top NINE
 
-var height = 390;
+var height = 465;
 var padding = 40;
 var middlePadding = (padding * 2) + 100;
 var width = $(window).width() - middlePadding - CHART_WIDTH - 30;

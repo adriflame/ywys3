@@ -35,10 +35,10 @@ h1 {
   position: relative;
   top: 0px;
   text-align: center;
-  padding-top: 10px;
-  margin-bottom: 10px; }
+  padding-top: 15px;
+  margin-bottom: 30px; }
   #banner img {
-    max-height: 120px; }
+    max-height: 160px; }
 
 #mainWrapper {
   padding: 0 40px;

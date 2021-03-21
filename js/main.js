@@ -178,7 +178,7 @@ function displayProfile(d) {
 }
 
 function getImageSource(d) {
-    if d.name.includes('/') {
+    if d.name.includes("/") {
         return "ywys3pics/" + d.name.substr(d.name.indexOf("/") + 1) + ".png";
     }
     else {
@@ -244,7 +244,6 @@ function plotData(data) {
     scaleY.domain([1, getLowestRank(data)]);
 
     var paths = plot.selectAll("path.ranking").data(data);
-
 
 
     var pathGenerator = d3.line()

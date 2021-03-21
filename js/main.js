@@ -8,7 +8,7 @@ var SELECT_OPACITY = 1;
 var CHART_WIDTH = 500;
 var CUTOFF = 9; // The top NINE
 
-var height = 465;
+var height = 390;
 var padding = 40;
 var middlePadding = (padding * 2) + 100;
 var width = $(window).width() - middlePadding - CHART_WIDTH - 30;
@@ -70,7 +70,7 @@ function setXAxis() {
 
         // Add gridline
         plot.append("path")
-            .attr("d", "M" + scaleX(i) + "," + scaleY(0) + "L" + scaleX(i) + "," + scaleY(99))
+            .attr("d", "M" + scaleX(i) + "," + scaleY(0) + "L" + scaleX(i) + "," + scaleY(118))
             .style("opacity", "0.1")
             .style("stroke-width", 3);
     });

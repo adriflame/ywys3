@@ -90,14 +90,14 @@ img.arrow {
   stroke: black; }
 
 .axis line {
-  stroke: white; }
+  stroke: black; }
 
 path.ranking {
   fill: none;
   cursor: pointer; }
 
 .note {
-  background: white;
+  background: black;
   color: white;
   display: inline-block;
   position: absolute;

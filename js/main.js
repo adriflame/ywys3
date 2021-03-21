@@ -178,7 +178,7 @@ function displayProfile(d) {
 }
 
 function getImageSource(d) {
-    return "ywys3pics/" + d.name.replace(/ /g, "").replace("/", "") + ".png";
+    return "ywys3pics/" + d.name.replace(/\s/g, "").replace("/", "") + ".png";
 }
 
 function getBackground(d) {

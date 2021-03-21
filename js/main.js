@@ -8,7 +8,7 @@ var SELECT_OPACITY = 1;
 var CHART_WIDTH = 500;
 var CUTOFF = 9; // The top NINE
 
-var height = 390;
+var height = 420;
 var padding = 40;
 var middlePadding = (padding * 2) + 100;
 var width = $(window).width() - middlePadding - CHART_WIDTH - 30;
@@ -29,7 +29,7 @@ var colors = {
 // Set up plot
 var svg = d3.select("#plot").append("svg")
     .attr("class", "axis")
-    .attr("height", 600)
+    .attr("height", height + padding * 2)
     .attr("width", width + padding * 2);
 
 var scaleX = d3.scaleLinear().domain([0, episodes.length - 1]).range([0, width]);

@@ -116,7 +116,7 @@ path.ranking {
 
 /* Info */
 #profile {
-  margin-top: 0px;
+  margin-top: 20px;
   margin-left: 40px;
   height: 160px; }
   #profile #picWrapper {
@@ -189,7 +189,7 @@ path.ranking {
     #top th:hover {
       color: black; }
   #top #latestRank, #top #letter, #top #rankChange, #top .smWidth {
-    width: 17px; }
+    width: px; }
   #top #rankChange, #top .rankWidth {
     width: 50px; }
   #top #name, #top .nameWidth {

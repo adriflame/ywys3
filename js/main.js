@@ -29,11 +29,11 @@ var colors = {
 // Set up plot
 var svg = d3.select("#plot").append("svg")
     .attr("class", "axis")
-    .attr("height", height + padding * 2)
+    .attr("height", 600)
     .attr("width", width + padding * 2);
 
 var scaleX = d3.scaleLinear().domain([0, episodes.length - 1]).range([0, width]);
-var scaleY = d3.scaleLinear().domain([0, 99]).range([0, height]);
+var scaleY = d3.scaleLinear().domain([0, 118]).range([0, height]);
 var plot = svg.append("g").attr("transform", "translate(" + padding + "," + padding + ")");
 
 setXAxis();

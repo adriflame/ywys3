@@ -27,7 +27,6 @@ h1 {
   height: 600px; }
 
 /* Top */
-
 #banner {
   background: #0564e9 url("../img/banner.png") center center;
   height: 200px;
@@ -186,7 +185,7 @@ path.ranking {
     cursor: pointer;
     text-align: left;
     border-bottom: 2px solid #ccc;
-    padding: 5px 15px !important; }
+    padding: 10px 15px !important; }
     #top th:hover {
       color: black; }
   #top #latestRank, #top #letter, #top #rankChange, #top .smWidth {

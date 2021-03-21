@@ -40,6 +40,7 @@ h1 {
   #banner img {
     max-height: 120px; }
 */
+
 #banner {
   background: #0564e9 url("../img/banner.png") center center;
   height: 200px;
@@ -52,7 +53,7 @@ h1 {
   #banner img {
     max-height: 120px; }
 
-    
+
 #mainWrapper {
   padding: 0 40px;
   margin: auto;
